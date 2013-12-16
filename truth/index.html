@@ -1,0 +1,198 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /><style type='text/css'>
+body {
+  font-family: 'Helvetica';
+  letter-spacing:-5px;
+  background:#000;
+  background-size:100%;
+  color:#fff;
+  margin:0;
+  padding:0;
+  font-weight:bold;
+}
+
+h1, h2, h3, p {
+  margin:0;
+}
+
+em, a {
+  font-style:normal;
+  color:#8dbd0c;
+}
+
+a {
+  /*background: #0f4d3;*/
+  color:#FFF;
+  text-decoration:none;
+  font-style:oblique;
+}
+
+img {
+/*  width:100%; */
+  height:100%;
+}
+
+div {
+  cursor:pointer;
+  cursor:hand;
+  position:absolute;
+  top:0;
+  left:0;
+}
+</style><script type='text/javascript'>
+window.onload = function() {
+    var s = document.getElementsByTagName('div'), cur = 0;
+    if (!s) return;
+    function go(n) {
+        cur = n;
+        var i = 1e3, e = s[n];
+        for (var k = 0; k < s.length; k++) s[k].style.display = 'none';
+        e.style.display = 'inline';
+        e.style.fontSize = i + 'px';
+        if (e.firstChild.nodeName === 'IMG') {
+            document.body.style.backgroundImage = 'url(' + e.firstChild.src + ')';
+            e.firstChild.style.display = 'none';
+        } else {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundColor = e.style.backgroundColor;
+        }
+        while (
+            e.offsetWidth > window.innerWidth ||
+            e.offsetHeight > window.innerHeight) {
+            e.style.fontSize = (i -= 10) + 'px';
+            if (i < 0) break;
+        }
+        e.style.marginTop = ((window.innerHeight - e.offsetHeight) / 2) + 'px';
+        if (window.location.hash !== n) window.location.hash = n;
+        document.title = e.textContent || e.innerText;
+    }
+    document.onclick = function() {
+        go(++cur % (s.length));
+    };
+    document.onkeydown = function(e) {
+        (e.which === 39) && go(Math.min(s.length - 1, ++cur));
+        (e.which === 37) && go(Math.max(0, --cur));
+    };
+    function parse_hash() {
+        return Math.max(Math.min(
+            s.length - 1,
+            parseInt(window.location.hash.substring(1), 10)), 0);
+    }
+    if (window.location.hash) cur = parse_hash() || cur;
+    window.onhashchange = function() {
+        var c = parse_hash();
+        if (c !== cur) go(c);
+    };
+
+    go(cur);
+};
+</script></head><body>
+
+<div></div>
+<div>Understanding</div>
+<div>Understanding should be easy</div>
+<div>Understanding is <em>hard</em></div>
+
+<div>When a program runs, we observe its external behaviors and construct narratives to explain our observations.</div>
+
+<div><IMG src="AreYouMyMother5.jpg" /></div>
+
+<div><IMG src="41103D8Y0SL._SS500_.jpg" /></div>
+
+<div>The state space of a single variable is a finite list of all values the variable can have. A program’s “total state space is regarded as the Cartesian product of the state spaces” of all its variables.</div>
+
+<div><u>0</u> <u>1</u> <u>2</u> <u>3</u> <u>4</u> <u>5</u> <u>6</u> <u>7</u> <u>8</u> <u>9</u> <u>10</u> <u>11</u> <u>12</u> <u>13</u> <u>14</u> <u>15</u> <u>16</u> <u>17</u> <u>18</u> <u>19</u> <u>20</u> <u>21</u> <u>22</u> <u>23</u> <u>24</u> <u>25</u> <u>26</u> <u>27</u> <u>28</u> <u>29</u> <u>30</u> <u>31</u> <u>32</u> <u>33</u> <u>34</u> <u>35</u> <u>36</u> <u>37</u> <u>38</u> <u>39</u> <u>40</u> <u>41</u> <u>42</u> <u>43</u> <u>44</u> <u>45</u> <u>46</u> <u>47</u> <u>48</u> <u>49</u> <u>50</u> <u>51</u> <u>52</u> <u>53</u> <u>54</u> <u>55</u> <u>56</u> <u>57</u> <u>58</u> <u>59</u> <u>60</u> <u>61</u> <u>62</u> <u>63</u></div>
+
+<div>This state space is a lot like the set of natural numbers</div>
+
+<div> <span style="white-space: nowrap; font-weight: normal;"> 0 -> 1 -> 2 -> 3 -> … -> <em>0xFFFFFFFF</em> </span> </div>
+
+<div> <span style="white-space: nowrap; font-weight: normal;"> 0 <em>&lt;</em>-> 1 <em>&lt;</em>-> 2 <em>&lt;</em>-> 3 <em>&lt;</em>-> … <em>&lt;</em>-> 0xFFFFFFFF </span> </div>
+
+<div>
+<span style="white-space: nowrap; font-weight: normal;"> <em>0</em> &lt;-> 1 &lt;-> 2 &lt;-> 3 &lt;-> … &lt;-> 0xFFFFFFFF &lt;-> <em>0</em> </span>
+</div>
+
+<div> <span style="white-space: nowrap; font-weight: normal;"> 0 &lt;-> 1 &lt;-> 2 &lt;-> 3 &lt;-> … &lt;-> <em>∞</em>  </span> </div>
+
+<div>
+<a href="https://twitter.com/substack/status/345149671666241537">numbers are just little machines that make digits —@substack</a>
+</div>
+
+<div> <span style="white-space: nowrap; font-weight: normal;"> 0000 &lt;-> 0001 &lt;-> 0010 &lt;-> 0011 &lt;-> … &lt;-> 0xFFFFFFFF &lt;-> <em>0000</em> </span> </div>
+
+
+<div>
+<span style="white-space: nowrap; font-weight: normal;">1 + 2 = 3</span>
+<span style="white-space: nowrap; font-weight: normal;">0.1 + 0.2 = 0.30000000000000004</span>
+</div>
+
+<div>As long as we reason about our programs using abstract types which have different properties than the real types we use to implement them, life will continue to be hard.</div>
+
+<div>“… Let’s see, then, whether there is, in the realm of the ideal, some necessary, obvious, simple quality that can serve as a type.” — Stéphane Mallarmé</div>
+
+<div><pre>
+public abstract class Point2D
+extends Object
+implements Cloneable</pre>
+The Point2D class defines a point representing a location in (x,y) coordinate space.
+</div>
+
+<div>
+While writing code, we represent our reasoning about the code in the way we factor functions and model data. Often we use very literally denotative types to structure our code in an attempt to raise the level of the abstraction, to reinforce through human language the semantics we hope to create in the machine.
+</div>
+
+<div>
+Types are provided as an abstraction because they precisely embody the yearning to compose more sophisticated and articulate state machines from the primordial and idiosyncratic state machines provided to us by necessity.
+</div>
+
+<div>Dijkstra observes about programs of multiple variables that “when we construct a state space by forming a Cartesian product, it is by no means certain that we shall have a good use for all its points.”</div>
+
+<div>
+<span style="white-space: nowrap; font-weight: normal;"> 0 &lt;-> <em>1</em> &lt;-> 2 &lt;-> 3 &lt;-> … &lt;-> 0xFFFFFFFF &lt;-> 0 </span>
+<span style="white-space: nowrap; font-weight: normal;"> 0 &lt;-> 1 &lt;-> 2 &lt;-> <em>3</em> &lt;-> … &lt;-> 0xFFFFFFFF &lt;-> 0 </span>
+<span style="white-space: nowrap; font-weight: normal;"> <em>0</em> &lt;-> 1 &lt;-> 2 &lt;-> 3 &lt;-> … &lt;-> 0xFFFFFFFF &lt;-> 0 </span>
+<span style="white-space: nowrap; font-weight: normal;"> 0 &lt;-> 1 &lt;-> 2 &lt;-> 3 &lt;-> <em>…</em> &lt;-> 0xFFFFFFFF &lt;-> 0 </span>
+<span style="white-space: nowrap; font-weight: normal;"> <em>0</em> &lt;-> 1 &lt;-> 2 &lt;-> 3 &lt;-> … &lt;-> 0xFFFFFFFF &lt;-> 0 </span>
+<span style="white-space: nowrap; font-weight: normal;"> <em>0</em> &lt;-> 1 &lt;-> 2 &lt;-> 3 &lt;-> … &lt;-> 0xFFFFFFFF &lt;-> 0 </span>
+<span style="white-space: nowrap; font-weight: normal;"> 0 &lt;-> <em>1</em> &lt;-> 2 &lt;-> 3 &lt;-> … &lt;-> 0xFFFFFFFF &lt;-> 0 </span>
+</div>
+
+<div>Correctness</div>
+
+<div>"If you haven't tested it, you don't know it works. You only hope it works."</div>
+
+<div>If you write some new code and break a pre-existing test, do you change the old test, or change your code?</div>
+
+<div>Human intent</div>
+
+<div>Documentation, advice, rumors, slogans, and <em>dogma</em> abstract over computer programs. Programs abstract over the interactions of their complex types. Complex types abstract over primitive types. Primitive types abstract over far more primitive types, which the hardware provides to abstract over itself.</div>
+
+<div><a href="https://twitter.com/Russell_Says/status/194640459639963648">"I don't remember things in English. Do you do that? Can you imagine, your brain would fill up in an instant." —Russell</a></div>
+
+<div>Even software which is well-written is not well understood.</div>
+
+<div>Every layer of abstraction must be perfect.</div>
+
+<div><img src="earth-vs-the-spider.jpg" /></div>
+
+<div>Questions?</div>
+
+<!-- <div><pre>
+$ link
+link target_file source_file
+</pre></div>
+
+<div><table>
+<tr><td>a</td><td>b</td></tr>
+<tr><td>a</td><td>b</td></tr>
+</table></div>
+ -->
+
+
+
+
+</body></html>
+
+
+
+
