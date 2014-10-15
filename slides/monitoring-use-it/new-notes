@@ -1,0 +1,48 @@
+(cloud monitoring purple cloud pulser)
+at cloud monitoring
+we love your data
+we want your data
+anything you can express in a number, we want
+you can emit every conditional branch your application takes, every number it evaluates, if we have trouble absorbing the mass of data you can produce, we will add bandwidth, storage, and features to enable you to give them to us
+
+(acumen)
+
+i know this isn't sufficient motivation to persuade you to do it
+a ticket to integrate with cloud monitoring is in your backlog
+for a while, you thought it would be interesting to put our agent on your cloud server, but you weren't sure what you'd emit or what we could do for you
+i'll run down the basics of our api and show you how we do it
+
+architecture diagram with simple flow collector -> queue -> processor -> alerter
+add queue -> blueflood
+(look at list of aggregation types from james)
+add queue -> acumen
+add alerter -> webhook -> autoscaling and alerter -> email and alerter -> pagerduty
+add api -> collector and api -> processor
+add agent -> queue
+
+(api example with postbin and changing the dsl)
+
+(structured webhook data to enable your automation)
+show the contents of the webhook with the two DSL states
+autoscaling is built on this
+
+our agent checks (and, consequently, storage, aggregation, and reporting of the metrics from the checks) are free for now
+our agent is extremely lightweight
+Open source (link to repo)
+Cross-platform C with an embedded Lua runtime
+3 persistent socket connections
+5 megabytes of ram (including statically bundled OpenSSL)
+Custom plugins
+Auto-updates
+It is so easy
+
+we aren't perfect (cue youtube of chris's happy birthday) http://www.youtube.com/watch?v=d-DQmmv_4Sg
+[we built a resilient, distributed infrastructure first
+and are gradually exposing the features in reach and adding agent checks]
+(show list of agent checks available in Reach vs agent checks available via the API)
+We have > 120,000 users but only > 10,000 agents connected
+There are >100 people at RAX.IO
+(rainbot)
+If a few of you go and enable the agent with only the agent checks available in Reach, we're going to notice
+There will be a bump in our graph (show graph of installed or connected agents?)
+

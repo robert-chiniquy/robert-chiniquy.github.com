@@ -1,0 +1,6 @@
+digraph g {
+  rankdir = "LR";
+  collector -> queue;
+  queue -> processor;
+  processor -> alerter;
+}

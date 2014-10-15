@@ -1,0 +1,12 @@
+digraph g {
+  rankdir = "LR";
+  collector -> queue;
+  queue -> processor;
+  processor -> alerter;
+  queue -> Data;
+  queue -> Acumen;
+  alerter -> webhook;
+  webhook -> Autoscaling;
+  alerter -> email;
+  alerter -> PagerDuty
+}

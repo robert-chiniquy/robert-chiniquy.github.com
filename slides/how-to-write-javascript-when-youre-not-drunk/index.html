@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>How do write Javascript when you're not drunk</title>
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<style type="text/css">
+			.chill .reveal .state-background {
+ 				background: rgb( 0, 20, 250);
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<section>
+						<img style="float:right; width:20%" src="img/rainbot.gif" />
+						<h1 style="text-align:left">How to write Javascript</h1><h2 style="text-align:right" class="fragment">…when you're not drunk</h2>
+					</section>
+					<section>
+					<p>You probably already think you know how to write Javascript when you're not drunk. But I hear you hating.</p>
+					</section>
+					<section>
+					<p>It's ok to have written some bad Javascript. No one writes the pure, innocent Javascript of Eden. We 	are all flawed.</p>
+					</section>
+					<section>
+						<p>When you wake up and realize what's happened, your friends are the ones who help you take care of it.</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>You started with some simple pseudocode…</h2>
+<pre><code>apiKey = loadConfig();
+userId = authenticateUser(apiKey);
+client = new ApiClient(userId);
+info = client.getUserInfo();
+writeResponse(client.format, serialize(info));
+</code></pre>
+					</section>
+					<section>
+						<h3>You wrote some async Javascript…</h3>
+<pre><code>var apiKey = fs.readFileSync(SETTINGS).apiKey;
+var client = new ApiClient();
+var info;
+async.waterfall([
+	function(callback) {
+		authenticateUser(apiKey, callback);
+	},
+	function(callback) {
+		client.getUserInfo(function(err, result) {
+			info = result.info;
+			callback();
+		});
+	},
+	function(callback) {
+		writeResponse(client.format, serialize(info), callback);
+	}
+], callback);
+</code></pre>
+					</section>
+					<section>
+						<h4>You couldn't construct `ApiClient` until you had a `userId`, ok so move that around</h4>
+<pre><code>var apiKey = fs.readFileSync(SETTINGS).apiKey;
+var client, info;
+async.waterfall([
+	function(callback) {
+		authenticateUser(apiKey, callback);
+	},
+	function(result, callback) {
+		// can't create the client until we have the userId
+		client = new ApiClient(result.userId);
+		client.getUserInfo(function(err, result) {
+			info = result.info;
+			callback();
+		});
+	},
+	function(callback) {
+		writeResponse(client.format, serialize(info), callback);
+	}
+], callback);
+</code></pre>
+					</section>
+					<section>
+						<h4>You needed some conditionals, just add that in there…</h4>
+<pre><code>
+	function(callback) {
+		if (!userId) {
+			info = defaultInfo;
+			callback();
+			return;
+		}
+		// can't create the client until we have the userId
+		client = new ApiClient(userId);
+		client.getUserInfo(function(err, result) {
+			info = result.info;
+			callback();
+		});
+	},
+</code></pre>
+					</section>
+					<section>
+
+						<h4>Then you had to adjust for the argument order of someone else's method…</h4>
+<pre><code>
+	function(callback) {
+		writeResponse(client.format, serialize(info), callback);
+	},
+	function(result, callback) {
+		reportMetrics(result.latency, result.statusCode);
+	}
+
+</code></pre>
+					</section>
+
+					<section>
+						<h1>Let's review</h1>
+					</section>
+					<section>
+						<h1>Pseudocode</h2>
+<pre class="fragment"><code>apiKey = loadConfig();
+userId = authenticateUser(apiKey);
+client = new ApiClient(userId);
+info = client.getUserInfo();
+writeResponse(client.format, serialize(info));
+</code></pre>
+					</section>
+
+					<section>
+						<h1>Reality</h1>
+<pre class="fragment"><code 	style="max-height: 800px">var apiKey = fs.readFileSync(SETTINGS).apiKey;
+var client, info;
+async.waterfall([
+	function(callback) {
+		authenticateUser(apiKey, callback);
+	},
+	function(callback) {
+		if (!userId) {
+			info = defaultInfo;
+			callback();
+			return;
+		}
+		// can't create the client until we have the userId
+		client = new ApiClient(userId);
+		client.getUserInfo(function(err, result) {
+			info = result.info;
+			callback();
+		});
+	},
+	function(callback) {
+		writeResponse(client.format, serialize(info), callback);
+	},
+	function(result, callback) {
+		reportMetrics(result.latency, result.statusCode);
+	}
+], callback);
+</code></pre>
+					</section>
+<!--
+					<section>
+						<h3>In real-world code, you also see:</h3>
+		        <ul>
+		          <li>No-op functions</li>
+		          <li>Functions which redefine themselves</li>
+		          <li>Functions which delete themselves</li>
+		        </ul>
+					</section>
+-->
+					<section>
+						<h2>Imagine the preceding example repeated hundreds of times within 200,000 lines of code …</h2>
+					</section>
+
+					<section>
+						<h3>Tiny factoring impedance adds up</h3>
+						<h4 class="fragment">You can reach these problems iteratively</h4>
+						<h4 class="fragment">Very simple factoring works fine for smaller projects and modules</h4>
+						<h5 class="fragment">It can even be elegant.</h5>
+						<p class="fragment">There's a cliff you hit in complexity<span class="fragment">, sometimes very late at night</span><span class="fragment">… and you might just add one commit <em>too many</em> and lose control.</span></p>
+					</section>
+					<section>
+						<h1 style="color: rgb(160, 30, 30); text-align:left" class="fragment grow">Don't be the one who takes things too far.</h1>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<img style="max-height:80%" src="img/wK0Wq5N.jpg"/>
+						<h2>It's ok don't worry chill you can fix it</h2>
+					</section>
+
+					<section>
+						<h3>After some time has passed, it is time to revisit your factoring</h3>
+						<ul>
+							<li>Bugs hide in lines of code</li>
+							<li>Don't overdo it<ul><li>The readability of inline anonymous functions is one of Javascript's virtues</li></ul></li>
+							<li>Sacrifice less for flow control</li>
+							<li>Nested scopes are untestable and share too much state</li>
+							<li>Untestable shared state breaks simple changes</li>
+							<li>Truly anonymous functions make terrible stack traces</li>
+						</ul>
+					</section>
+					<section>
+						<h2 style="text-align:right">Having to change the interface of a class or function is the worst.</h2>
+					</section>
+					<section>
+						<h3>How to ZOOM through huge refactors by rewriting the `arguments` array:</h3>
+						<ul>
+							<li class="fragment">Yeah, I was kidding. Don't do that.</li>
+							<li class="fragment">Don't monkey-patch objects or modules either</li>
+							<li class="fragment">There is so much bad code to learn from</li>
+							<li class="fragment">Feeling the urge to do something crazy means it is time to refactor to remove the temptation</li>
+							<li class="fragment">When in doubt, listen to your heart</li>
+						</ul>
+					</section>
+					<section>
+						<h2 style="text-align:left">What does it take to get async code that looks like this?</h2>
+<pre><code>async.waterfall([
+	authenticateUser,
+	client.getUserInfo,
+	writeResponse
+], callback);
+</code></pre>
+					</section>
+					<section>
+						<h1>You can't.</h1>
+						<ul>
+							<li class="fragment">`this` is too unwieldy</li>
+							<li class="fragment">You use third-party libraries with varying parameter order</li>
+							<li class="fragment">Even if it works today, a requirement change will break this tight coupling tomorrow</li>
+							<li class="fragment">You just aren't that lucky</li>
+						</ul>
+
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Instead, use a class</h2>
+						<p>Just a thought. An async workflow is a state machine. A class is a collection of state and operations upon that state. Consider just writing a class for each workflow, exposing each step as a method, and keeping all shared state in the class instead of embedded in lexical scope.</p>
+						<p>The methods will be individually testable, tests can create fixture instances of the class, and you can use dependency injection within the class to mock external resources.</p>
+					</section>
+					<section>
+						<p>Assume the ideal method signatures and return values, write the async workflow first, and write your class later</p>
+						<p>Just one possible way to go:</p>
+<pre><code>async.waterfall([
+	this.auth.bind(this),
+	this.getUserInfo.bind(this),
+	this.writeResponse.bind(this)
+], callback);
+</code></pre>
+						<p>(too bad about having to bind `this`)</p>
+					</section>
+
+					<section>
+						<p>Oh, and never use `async.waterfall`, it tightly couples callback parameters to method signatures. Use `async.series` or `async.auto`.</p>
+<pre><code>async.series([
+	this.auth.bind(this),
+	this.getUserInfo.bind(this),
+	this.writeResponse.bind(this)
+], callback);
+</code></pre>
+						<p>Each method can encapsulate the weirdness required for the code it interacts with. You could even try using polymorphism for type dispatch instead of conditional statements inside them.</p>
+					</section>
+
+					<section>
+						<h3>You may also want to refactor by removing a class or two</h3>
+						<p class="fragment">Inline anonymous functions sometimes increase clarity</p>
+						<p class="fragment">Javascript isn't Java or Ruby— seek the most consistent idiomatic expression</p>
+						<p class="fragment">Sometimes you can remove abstractions and layers of callbacks to find some very simple code</p>
+						<p class="fragment">The simplest code is likely the most correct.</p>
+					</section>
+
+					<section>
+						<h2>Judge your code by how much it lets you enjoy Javascript</h2>
+						<h3 class="fragment">Again, don't overdo it, or you'll never have any fun</h3>
+					</section>
+				</section>
+
+				<section>
+					<h1>Observations?</h1>
+					<h1 class="fragment">Wonderment?</h1>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+//				controls: true,
+//				progress: true,
+				history: true,
+//				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

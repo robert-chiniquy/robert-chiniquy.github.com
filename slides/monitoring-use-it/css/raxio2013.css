@@ -1,0 +1,144 @@
+body {
+}
+
+h1 { color: #723; }
+h1 a:hover {   text-decoration: none; }
+
+b { color: #723; }
+
+h2, p { text-align: left; }
+h2 { color: #723; font-size: 1.3em; margin-left: 0em; }
+
+#header {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
+#header h1 {
+  font-size: 5em;
+  margin: 0em .1em 0em 1em;
+  float: left;
+}
+
+#header p.subtitle {
+  font-size: 1.5em;
+  margin: 1em 0em -1em 3.4em;
+  color: #0088cc;
+}
+
+#header p {
+  font-size: 1.3em;
+  color: #aaa;
+  margin: 2em 6em 0em 2em;
+}
+
+#header #what {
+  font-size: 1.4em;
+  color: #723;
+}
+
+#bar, table, tr, td {
+  margin: auto;
+  text-align: center;
+}
+
+#proposal {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+#slide {
+  width: 75%;
+  margin: auto;
+}
+
+
+#bar a:hover {
+  text-decoration: none;
+}
+
+#submit, #share, #propose {
+  color: #777;
+  font-weight: bold:
+  text-align: left;
+  margin: auto;
+  font-family: "Arial Black", Arial, sans-serif;
+  padding: 4em 0em 2em;
+}
+
+#submit:hover, #share:hover, #propose:hover {
+  color: #723;
+}
+
+.title {
+  font-weight: 900;
+  font-size: 5em;
+  padding: .3em;
+  text-align: left;
+  margin: auto;
+}
+
+.text {
+  font-weight: 900;
+  font-size: 1.4em;
+  margin: auto;
+  text-align: left;
+  padding-left: 1em;
+}
+
+#submit p span, #share p span, #propose p span {
+  font-size: .6em;
+}
+
+#proposal {
+  margin-top: 2em;
+}
+
+#proposal ul {
+  text-align: left;
+  list-style: none;
+  margin-bottom: 2em;
+}
+
+#proposal ul#goals li ul li {
+  //padding-bottom: .7em;
+}
+
+#proposal ul#goals li ul li#lastgoal {
+  //padding-bottom: 0em;
+}
+
+#proposal ul li ul {
+  list-style: circle;
+}
+
+#proposal ul li ul {
+  margin-bottom: 0;
+}
+
+#rainbot1, #rainbot2, #rainbot3 {
+  height: 3.5em;
+  width: 3.5em;
+  padding: 2em 0 0 2em;
+}
+
+/*
+#questions {
+  font-size: .85em;
+  width: 50%;
+  margin: 3em auto;
+  text-align: center;
+}
+*/
+
+i {
+  color: #977;
+  //float: right;
+}
+
+#proposal ul.disc { list-style: disc; }
+
+#posterbar {}
+#posterbar a img { height: 144px; }

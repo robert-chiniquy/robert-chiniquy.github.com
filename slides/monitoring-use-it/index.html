@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Cloud Monitoring</title>
+
+    <link rel="shortcut icon" href="img/rainbot-25px.ico" />
+    <!-- <link href="css/bootstrap.css" rel="stylesheet"> -->
+    <link href="css/raxio2013.css" rel="stylesheet">
+</head>
+
+<body class="impress-not-supported">
+
+<!-- <div class="fallback-message">
+    <p>&lt;/3></p>
+</div>
+ -->
+
+<div id="impress" data-transition-duration="400" style="font-size: 36pt">
+
+    <div id="rainbot" class="step slide" data-x="-10000" data-y="50000" data-z="-5500" data-rotate-x="-80" data-rotate-y="10" data-scale="8">
+        <img src="img/rainbot.gif" />
+    </div>
+
+    <div id="cloud_monitoring" class="step slide" data-x="-20000" data-y="-15000">
+        <img src="img/cloudmonitoring-512.png" />
+    </div>
+
+    <div class="step slide" data-x="0" data-y="-15000">
+        <h2 style="display: block; width: 600px">We &lt;3 your data.</h2>
+    </div>
+
+    <div class="step slide" data-x="0" data-y="-5000">
+        <h2 style="display: block; width: 800px">We want your data.</h2>
+    </div>
+
+    <div class="step slide" data-x="0" data-y="5000">
+        <h2 style="display: block; width: 800px">Anything you can express as a number, we want.</h2>
+    </div>
+
+    <div class="step slide" data-x="0" data-y="15000">
+        <h2 style="display: block; width: 1200px">You can emit every conditional branch your application takes, every number it evaluates— if we have trouble absorbing the mass of data you can produce, we will add bandwidth, storage, and features to enable you to give them to us.</h2>
+    </div>
+
+    <div class="step slide" data-x="0" data-y="25000">
+        <h2 style="display: block; width: 1200px">I know this isn't enough to persuade you to do it.</h2>
+    </div>
+
+    <div class="step slide" data-x="0" data-y="35000">
+        <h2 style="display: block; width: 1200px">A ticket to integrate with Cloud Monitoring is in your backlog.</h2>
+    </div>
+
+    <div class="step slide" data-x="0" data-y="45000">
+        <h2 style="display: block; width: 1200px">It takes time, you haven't gotten around to it yet, you aren't sure what we can do for you.</h2>
+    </div>
+
+    <div id="basic" class="step slide" data-x="10000" data-y="-15000">
+        <img src="img/diagrams/c-q-p-a.dot.png" />
+    </div>
+
+    <div id="dsl" class="step slide" data-x="10000" data-y="5000">
+        <pre>
+if (metric['available'] < 70) {
+  return new AlarmStatus(ALERT, 'BEEP BLOOP');
+}
+</pre>
+    </div>
+
+    <div id="data" class="step slide" data-x="30000" data-y="-15000">
+        <img src="img/diagrams/q-b.dot.png" />
+    </div>
+
+     <div id="stats" class="step slide" data-x="30000" data-y="-5000">
+        <h2 style="display: block; width: 1200px">We'll aggregate metrics for you</h2>
+        <ul><li>min</li><li>max</li><li>avg</li><li>variance</li></ul>
+    </div>
+
+    <div id="graphs" class="step slide" data-x="30000" data-y="5000">
+        <h2 style="display: block; width: 1200px; font-size: 24pt">We'll graph your metrics for you</h2>
+        <img src="img/graphs.png" />
+        <a href="https://ui-labs.cloudmonitoring.rackspace.com">https://ui-labs.cloudmonitoring.rackspace.com</a>
+    </div>
+
+    <div id="acumen" class="step slide" data-x="50000" data-y="-15000">
+        <img src="img/diagrams/q-a.dot.png" />
+    </div>
+
+    <div id="notifications" class="step slide" data-x="70000" data-y="-15000">
+        <img src="img/diagrams/outputs.dot.png" />
+    </div>
+
+    <div id="json" class="step slide" data-x="70000" data-y="-5000">
+        <pre style="font-size:10pt;">
+        { alarm:
+           { check_id: 'ch9lBCPgxY',
+             created_at: 1363131067777,
+             criteria: 'if (metric[\'available\'] &lt; 70) {\n return new AlarmStatus(WARNING, \'BEEP BLOOP\');\n}\n',
+             disabled: false,
+             id: 'alit0OrzFE',
+             label: 'break things',
+             metadata: null,
+             notification_plan_id: 'npN6ZExwvT',
+             updated_at: 1364481657331 },
+          check:
+           { created_at: 1360346982870,
+             details: { count: 5 },
+             disabled: false,
+             id: 'ch9lBCPgxY',
+             label: 'pang',
+             metadata: null,
+             monitoring_zones_poll: [ 'mzdfw', 'mzlon', 'mzord' ],
+             period: 60,
+             target_alias: 'public0_v4',
+             target_hostname: null,
+             target_resolver: null,
+             timeout: 30,
+             type: 'remote.ping',
+             updated_at: 1360346982870 },
+          details:
+           { collector_address_v4: '50.56.142.139',
+             collector_address_v6: '2001:4800:7902:0001:0000:0000:3238:8e8b',
+             metrics: { available: [Object], average: [Object] },
+             observations: [ [Object], [Object], [Object] ],
+             state: 'OK',
+             status: 'Matched default return statement',
+             target: '108.171.186.123',
+             timestamp: 1364481700495,
+             txn_id: '.rh-IWBu.h-ord1-maas-prod-api0.r-z25rAX55.c-13296181.ts-1360346982530.v-d7a5c3d' },
+          entity:
+           { agent_id: 'rch-rs-1',
+             created_at: 1344693147447,
+             id: 'enR0s3kiEC',
+             ip_addresses:
+              { private0_v4: '10.179.107.51',
+                public0_v4: '108.171.186.123' },
+             label: 'rch-rs-1',
+             managed: false,
+             metadata: null,
+             updated_at: 1360349503220,
+             uri: 'https://servers.api.rackspacecloud.com/v1.0/678486/servers/20749513' },
+          event_id: 'ac4myXEUs3:enR0s3kiEC:alit0OrzFE:ch9lBCPgxY:1364481700000:OK',
+          log_entry_id: '9a1c31f0-97b5-11e2-97ae-19b3da144424',
+          tenant_id: '678486' }
+        </pre>
+    </div>
+
+    <div id="api" class="step slide" data-x="90000" data-y="-15000">
+        <img src="img/diagrams/api.dot.png" />
+    </div>
+
+    <div id="agent" class="step slide" data-x="110000" data-y="-15000">
+        <img src="img/diagrams/agent.dot.png" />
+    </div>
+
+    <div id="more_agent" class="step slide" data-x="110000" data-y="-5000">
+        <h2 style="display: block; width: 1200px">A lightweight, open source, cross-platform agent written in C with an embedded asynchronous Lua runtime</h2>
+        <a href="https://github.com/racker/virgo">https://github.com/racker/virgo</a>
+    </div>
+
+    <div id="more_more" class="step slide" data-x="130000" data-y="-5000">
+        <h2 style="display: block; width: 1200px">Our agent checks (and, consequently, alerting, persistance, aggregation, and reporting of the metrics from the checks) are free for now</h2>
+    </div>
+
+    <div id="more_more_more" class="step" data-x="150000" data-y="-5000">
+        <h2 style="display: block; width: 1200px">3 persistent socket connections.<BR />
+        5 megabytes of RAM <BR/>
+        Custom plugins <BR/>
+        Auto-updates<BR/>
+        </h2>
+    </div>
+
+    <div id="more_more_more_more" class="step" data-x="170000" data-y="-5000">
+        <h2 style="display: block; width: 500px">It is so easy.</h2>
+    </div>
+
+    <div id="check_types" class="step" data-x="190000" data-y="-5000">
+        <ul style="width: 500px; font-size: 24pt;">
+            <li>remote.dns</li>
+            <li>remote.ssh</li>
+            <li>remote.smtp</li>
+            <li>remote.http</li>
+            <li>remote.tcp</li>
+            <li>remote.ping</li>
+            <li>remote.ftp-banner</li>
+            <li>remote.imap-banner</li>
+            <li>remote.pop3-banner</li>
+            <li>remote.smtp-banner</li>
+            <li>remote.postgresql-banner</li>
+            <li>remote.telnet-banner</li>
+            <li>remote.mysql-banner</li>
+            <li>remote.mssql-banner</li>
+            <li>agent.memory</li>
+            <li>agent.cpu</li>
+            <li>agent.load_average</li>
+            <li>agent.disk</li>
+            <li>agent.filesystem</li>
+            <li>agent.network</li>
+            <li>agent.apache</li>
+            <li>agent.redis</li>
+            <li>agent.mysql</li>
+            <li>agent.plugin</li>
+        </ul>
+    </div>
+
+    <div id="humble" class="step slide" data-x="210000" data-y="-6000">
+        <h2 style="display: block; width: 600px">We aren't perfect.</h2>
+    </div>
+
+    <div id="numbers" class="step slide" data-x="210000" data-y="-5000">
+        <h2 style="display: block; width: 1200px">We have > 120,000 users,<BR /> but only > 10,000 agents connected.</h2>
+    </div>
+
+    <div id="graph" class="step slide" data-x="230000" data-y="-5000">
+        <img src="img/for-pres.png" />
+    </div>
+
+    <div id="please" class="step" data-x="250000" data-y="-5000">
+        <h2 style="display: block; width: 800px"><em>Please</em> give us your metrics.</h2>
+    </div>
+
+
+</div>
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+</body>
+</html>
