@@ -79,7 +79,7 @@ function build_page(page_tpl, file, next_file) {
 
   var next_title = get_meta(next_file).title;
 
-  $('#next').append("And then… <a href='/" + mdToHtml(next_file) + "'>" + next_title + "</a>");
+  $('#next').append("<a href='/" + mdToHtml(next_file) + "'>" + next_title + "</a>");
 
   var doc = '<!DOCTYPE html>\n' + $.html();
   write_file(mdToHtml(file), doc);
