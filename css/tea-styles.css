@@ -54,6 +54,7 @@ hr                { border: 0;
 header {
   background-color: #eee;
   background-image: url(/images/light-sp-kat-src.jpg);
+  background-size: cover;
   margin: 0 auto;
   text-align: center;
   padding: 4.5em 0;
@@ -63,21 +64,26 @@ header {
 }
 
 canvas {
-  width: 90%;
-  height: 70%;
+  width: 60%;
+  height: 80%;
   position: absolute;
   z-index: -10;
-  left: 10em;
+  /*left: 10em;*/
+  right: 0;
   top: 0;
   margin: 0;
-  padding: 100px;
+  margin-top: 0.1em;
+  /*margin-left:5em;*/
+  padding: 0px;
+  /*padding-top: -5em;*/
   padding-bottom: 200px;
-  padding-top: -5em;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
 }
 
 .wrapper, .downloads, header {
-  opacity: 0.9;
-  filter: alpha(opacity=90);
+  opacity: 0.85;
+  filter: alpha(opacity=85);
 }
 
 #content {
@@ -88,8 +94,12 @@ canvas {
 }
 
 header hgroup {
-  opacity: 0.92;
-  filter: alpha(opacity=92);
+  opacity: 0.93;
+  filter: alpha(opacity=93);
+}
+
+.title {
+  text-shadow: 0.3px 0.3px 1px #999;
 }
 
 .thanks {

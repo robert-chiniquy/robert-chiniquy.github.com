@@ -79,6 +79,10 @@ function build_page(page_tpl, file, next_file) {
 
   var next_title = get_meta(next_file).title;
 
+  $('.title').append(next_title);
+  $('meta[property="og:title"]').attr('content', next_title);
+  $('meta[name="twitter:title"]').attr('content', next_title);
+
   $('#next').append("<a href='/" + mdToHtml(next_file) + "'>" + next_title + "</a>");
 
   var doc = '<!DOCTYPE html>\n' + $.html();

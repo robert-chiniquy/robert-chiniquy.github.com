@@ -1,5 +1,5 @@
 ---
-title: "Album Leaf"
+title: "Mallarmé's 'Album Leaf'"
 order: 0
 ---
 
