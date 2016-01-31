@@ -73,17 +73,20 @@ function build_page(page_tpl, file, next_file) {
 
   if (meta.title) {
     $('#content').append('<h1>' + meta.title + '</h1>');
+    $('meta[property="og:title"]').attr('content', meta.title);
+    $('meta[name="twitter:title"]').attr('content', meta.title);
+
+    $('meta[property="og:description"]').attr('content', meta.title);
+    $('meta[name="twitter:description"]').attr('content', meta.title);
+  }
+
+  var next_title = get_meta(next_file).title;
+  if (next_title) {
+    $('.title').append(next_title);
+    $('#next').prepend("<a href='/" + mdToHtml(next_file) + "'>" + next_title + "</a>");
   }
 
   $('#content').append(contents);
-
-  var next_title = get_meta(next_file).title;
-
-  $('.title').append(next_title);
-  $('meta[property="og:title"]').attr('content', next_title);
-  $('meta[name="twitter:title"]').attr('content', next_title);
-
-  $('#next').append("<a href='/" + mdToHtml(next_file) + "'>" + next_title + "</a>");
 
   var doc = '<!DOCTYPE html>\n' + $.html();
   write_file(mdToHtml(file), doc);

@@ -65,20 +65,21 @@ header {
 
 canvas {
   width: 60%;
-  height: 80%;
+  height: 90%;
   position: absolute;
   z-index: -10;
   /*left: 10em;*/
   right: 0;
   top: 0;
   margin: 0;
-  margin-top: 0.1em;
+  /*margin-top: 1em;*/
   /*margin-left:5em;*/
   padding: 0px;
   /*padding-top: -5em;*/
   padding-bottom: 200px;
   opacity: 0.8;
   filter: alpha(opacity=80);
+  /*blend-mode: color-dodge;*/
 }
 
 .wrapper, .downloads, header {
@@ -102,19 +103,23 @@ header hgroup {
   text-shadow: 0.3px 0.3px 1px #999;
 }
 
+#next {
+  text-align:right;
+}
+
 .thanks {
   opacity: 0.3;
   filter: alpha(opacity=30);
 }
 
 header hgroup {
+  max-width: 700px;
   background: #fff;
   background-image: url(/images/grey-rch.jpg);
   background-size: cover;
   color: #222;
   padding:4px;
   border: 2px solid #aaa;
-  max-width: 700px;
   display: block;
   line-height: 1.35em;
   margin: 0 auto;
@@ -153,8 +158,12 @@ header hr {
   background: #999;
 }
 
-.downloads ul, #content, footer {
+#content, .downloads ul {
   max-width: 700px;
+}
+
+.downloads ul, #content, footer {
+  /*max-width: 700px;*/
   padding: 0 60px;
   margin: 0 auto;
 }
