@@ -21,7 +21,6 @@
     "surv": "^1.0.0"
   },
   "devDependencies": {
-    "capitalize": "^1.0.0",
     "cheerio": "^0.19.0",
     "fs-extra": "^0.26.5",
     "highlight.js": "^9.1.0",

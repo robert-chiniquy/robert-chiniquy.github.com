@@ -9,13 +9,9 @@ var cheerio = require('cheerio');
 var typeset = require('typeset');
 var marked = require('meta-kramed');
 var highlightjs = require('highlight.js');
-var capitalize = require('capitalize');
 var logmagic = require('logmagic');
 logmagic.route("__root__", logmagic.DEBUG, "console");
 var log = logmagic.local("generate-docs");
-
-
-var DISTDIR = 'dist';
 
 // Usage
 // ./generate.js --page page.html <list of .md files>
