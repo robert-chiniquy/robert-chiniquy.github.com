@@ -61,6 +61,11 @@ header {
   width: 100%;
   top: 0;
   transition: 0.15s ease-in-out;
+
+  font-language-override: normal;
+  font-kerning: auto;
+  font-feature-settings: "kern", "liga", "dlig", "hlig", "cswh";
+  font-synthesis: weight style;
 }
 
 canvas {
@@ -100,7 +105,7 @@ header hgroup {
 }
 
 .title {
-  text-shadow: 0.3px 0.3px 1px #999;
+  text-shadow: 0.3px 0.3px 0.3px #999;
 }
 
 #next {
@@ -133,7 +138,7 @@ header div {
 header h1 {
   font-size: 2.5em;
   line-height: 1.15em;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   letter-spacing: 0.1em;
   margin-bottom: 0.5em;
   margin-top: 0.5em;
@@ -142,7 +147,7 @@ header h1 {
 header h2 {
   margin-top: 0;
   text-transform: none;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: 0;
   color: #888;
   margin-bottom: 1.75em;
@@ -242,5 +247,3 @@ footer {
   #content, footer { padding: 0 1.5em;}
   #content { padding-top: 2em; }
 }
-
-
