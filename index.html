@@ -33,8 +33,10 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
+
   <link rel="stylesheet/less" type="text/css" href="/css/cards.less">
   <script src="//cdn.jsdelivr.net/npm/less@3.13"></script>
+
   <style>
     .card__image--cactus {
       background-image: url(/images/sanpedro.jpg);
@@ -43,7 +45,13 @@
     .card__image--sft {
       background-image: url(/images/sft.jpg);
     }
+
+    .card__image--books {
+      background-image: url(/images/books.png);
+    }
+
   </style>
+
 </head>
 
 <body>
@@ -61,6 +69,8 @@
   <div id="content">
 
     <ul class="cards">
+
+
       <li class="cards__item">
         <div class="card">
           <div class="card__content">
@@ -98,6 +108,7 @@
           </div>
         </div>
       </li>
+
       <li class="cards__item">
         <div class="card">
           <div class="card__image card__image--cactus"></div>
@@ -141,6 +152,16 @@
         </div>
       </li>
 
+        <li class="cards__item">
+    <div class="card">
+      <div class="card__image card__image--books"></div>
+      <div class="card__content">
+        <div class="card__title">Reading for a sense of self</div>
+        <p class="card__text">If you're looking for <a href="https://bookshelf.website/rch/mixes/5q0wp/reading-for-a-sense-of-self">something to read</a>… These are some books I like.</p>
+      </div>
+    </div>
+  </li>
+
 
       <li class="cards__item">
         <div class="card" style="background-color: #000000;">
@@ -150,7 +171,9 @@
             <script src="macroquad/gl.js"></script>
             <script src="macroquad/sapp_jsutils.js"></script>
             <script src="macroquad/quad-url.js"></script>
-            <script>load("macroquad/app.wasm");</script>
+            <script>
+              load("macroquad/app.wasm");
+            </script>
           </div>
         </div>
       </li>
@@ -246,7 +269,7 @@
           </blockquote>
           <script async src="//www.instagram.com/embed.js"></script>
         </div>
-  </div>
+
   </li>
 
 
