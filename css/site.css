@@ -291,17 +291,22 @@ img {
 
 /* A page card links as a whole: the title link covers the card, and links
    in the card text stay above it. */
-.card--page {
+.card--page,
+.card:has(> .card__image):has(.card__title a) {
   position: relative;
 }
 
-.card--page .card__title a::after {
+/* A linked card with an image links as a whole too, so the image clicks
+   through. */
+.card--page .card__title a::after,
+.card:has(> .card__image) .card__title a::after {
   content: "";
   position: absolute;
   inset: 0;
 }
 
-.card--page .card__text a {
+.card--page .card__text a,
+.card:has(> .card__image):has(.card__title a) .card__text a {
   position: relative;
   z-index: 1;
 }
