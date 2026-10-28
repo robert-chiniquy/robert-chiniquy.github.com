@@ -109,3 +109,9 @@ image: /talks/agent-memory-informed-authz/deck/thumbnail.png
 image_alt: Title slide of Agent Memory-informed AuthZ
 ---
 A fun little talk I gave at fwd:cloudsec 2026.
+---
+title: Slides from an old talk a long time ago
+link: /slides/truth/
+image: /slides/truth/earth-vs-the-spider.jpg
+image_alt: Black-and-white film still of a giant spider looming over a town street while people run past a parked car
+---
