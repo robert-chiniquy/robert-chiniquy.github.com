@@ -1,0 +1,598 @@
+/* Card index and article pages. Built pages link this file directly; there is
+   no CSS build step. */
+
+:root {
+  --gray-darker: #444444;
+  --gray-dark: #696969;
+  --gray: #999999;
+  --gray-lighter: #ececec;
+  --gray-lightest: #f6f6f6;
+  --card: #ffffff;
+
+  /* Type sizes. Each step is 1.25 to 1.6 times the one below, so a heading
+     stands clearly above the text it heads. Everything on the site uses one
+     of these. */
+  --type-small: 0.8rem;   /* bylines under a quote */
+  --type-text: 0.875rem;  /* card text, verse, page notes */
+  --type-body: 1rem;      /* article text, a quoted post */
+  --type-title: 1.25rem;  /* card titles */
+  --type-page: 2rem;      /* article titles */
+  --type-name: 2.5rem;    /* the name in the header */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* The page is a rounded sheet on a dark frame, the way the cards sit on it. */
+:root {
+  --frame: #1c1c1c;
+  --ground: var(--gray-lightest);
+  --radius: 0.75rem;
+}
+
+html {
+  background-color: var(--frame);
+}
+
+body {
+  box-sizing: border-box;
+  min-height: 100vh;
+  margin: 0;
+  padding: 1rem;
+  background-color: var(--ground);
+  border-radius: 1.25rem;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* With the rays on (the Space key, js/rays.js) the page pulls in from the
+   viewport edges so the frame shows around it, and the rays draw on a canvas
+   behind the page. */
+:root[data-rays] body {
+  min-height: calc(100vh - 3rem);
+  margin: 1.5rem;
+}
+
+/* On a phone the frame is thin so the cards keep their width. */
+@media (max-width: 40rem) {
+  :root[data-rays] body {
+    min-height: calc(100vh - 1rem);
+    margin: 0.5rem;
+  }
+}
+
+.rays {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Header on every page: name, bio, and one row of profile links, left
+   aligned with the first card, closed by a rule. */
+
+.site-header {
+  margin: 0 0 0.5rem;
+  padding: 0.5rem 0 0.75rem;
+  border-bottom: 1px solid currentColor;
+}
+
+@media (min-width: 40rem) {
+  .site-header {
+    margin: 0 1rem;
+  }
+}
+
+.site-header__name {
+  margin: 0;
+  font-size: var(--type-name);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+}
+
+.site-header__name a,
+.site-header__name a:visited,
+[data-theme="dark"] .site-header__name a,
+[data-theme="dark"] .site-header__name a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-header__bio > :first-child {
+  margin-top: 0.5rem;
+}
+
+.site-header__bio > :last-child {
+  margin-bottom: 0;
+}
+
+.site-header__links {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--type-text);
+}
+
+.site-header__links li + li::before {
+  content: "|";
+  margin: 0 0.5em;
+  color: var(--gray);
+}
+
+/* Icons are drawn in the muted text color, not the link color, so the row
+   stays quiet; hover brings them to full text color. */
+.site-header__links:has(.site-header__icon) {
+  gap: 0.85rem;
+  margin-top: 0.6rem;
+}
+
+.site-header__links:has(.site-header__icon) li + li::before {
+  content: none;
+}
+
+.site-header__links a:has(.site-header__icon),
+.site-header__links a:has(.site-header__icon):visited {
+  display: block;
+  color: var(--gray-dark);
+}
+
+.site-header__links a:has(.site-header__icon):hover {
+  color: inherit;
+}
+
+/* Hover lifts the icon a little. */
+.site-header__icon svg {
+  transition: transform 120ms ease-out;
+}
+
+.site-header__links a:hover .site-header__icon svg {
+  transform: translateY(-2px) scale(1.15);
+}
+
+[data-theme="dark"] .site-header__links a:has(.site-header__icon):hover {
+  color: #5cecff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header__icon svg {
+    transition: none;
+  }
+}
+
+.site-header__icon svg {
+  display: block;
+  width: 1.4rem;
+  height: 1.4rem;
+  stroke-width: 1.75;
+}
+
+/* Index */
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* A card ends at its content instead of stretching to the row's tallest. */
+.cards__item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  padding: 0.5rem 0;
+}
+
+@media (min-width: 40rem) {
+  .cards__item {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 56rem) {
+  .cards__item {
+    width: 50%;
+  }
+}
+
+@media (min-width: 72rem) {
+  .cards__item {
+    width: 33.3333%;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  background-color: var(--card);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.08), 0 6px 18px -8px rgb(0 0 0 / 0.18);
+  transition: box-shadow 150ms ease-out;
+}
+
+.card:hover {
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.1), 0 10px 26px -8px rgb(0 0 0 / 0.28);
+}
+
+.card__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+@media (min-width: 40rem) {
+  .card__image {
+    aspect-ratio: 3 / 2;
+  }
+}
+
+.card__content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: 1rem;
+}
+
+.card__content--flush {
+  padding: 0;
+}
+
+.card__title {
+  margin: 0 0 0.75rem;
+  font-size: var(--type-title);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+/* A linked title reads as a heading; the underline shows on hover. */
+.card__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card__title a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* A page card links as a whole: the title link covers the card, and links
+   in the card text stay above it. */
+.card--page {
+  position: relative;
+}
+
+.card--page .card__title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.card--page .card__text a {
+  position: relative;
+  z-index: 1;
+}
+
+.card__text {
+  flex: 1 1 auto;
+  font-size: var(--type-text);
+  line-height: 1.5;
+}
+
+.card__text > :first-child {
+  margin-top: 0;
+}
+
+.card__text > :last-child {
+  margin-bottom: 0;
+}
+
+.card__text pre {
+  overflow-x: auto;
+}
+
+/* An image in the card text sits on its own line, centered. */
+.card__text img,
+.card__text .c1-mark {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Card text that starts with an image puts the image above the title, as on
+   a card with an image field. The text box drops out of the layout so its
+   first child can move ahead of the title; flex items do not collapse
+   margins, so each child keeps only a bottom margin. */
+.card__text:has(> :first-child :is(img, iframe)) {
+  display: contents;
+}
+
+.card__text:has(> :first-child :is(img, iframe)) > * {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.card__text:has(> :first-child :is(img, iframe)) > :first-child {
+  order: -1;
+  margin-bottom: 1rem;
+}
+
+.card__text:has(> :first-child :is(img, iframe)) > :last-child {
+  margin-bottom: 0;
+}
+
+.verse {
+  font-size: var(--type-text);
+}
+
+/* More room under the title of the content-heavy poem card. */
+.card:has(.verse) .card__title {
+  margin-bottom: 1.1rem;
+}
+
+/* Optical margin alignment. A round or slanted capital that starts a line
+   looks indented, so .pull-X moves the letter left into the margin. The
+   .push-X span before the preceding space adds the same width back; when
+   both sit on one line they cancel, and when the line breaks at that space
+   the push stays at the end of the previous line. */
+.push-C,
+.push-O {
+  margin-right: 0.06em;
+}
+
+.pull-C,
+.pull-O {
+  margin-left: -0.06em;
+}
+
+.push-V,
+.push-A {
+  margin-right: 0.05em;
+}
+
+.pull-V,
+.pull-A {
+  margin-left: -0.05em;
+}
+
+/* Safari: quotes and similar marks at a line's start or end hang outside. */
+.card__text,
+.article {
+  hanging-punctuation: first last;
+}
+
+/* A quoted post: its own rounded box, the words a step larger, and the
+   attribution under a rule in small gray, as a post's byline row. */
+.card__text blockquote {
+  margin: 0;
+  padding: 0.9rem 1rem 0.7rem;
+  border: 1px solid var(--gray-lighter);
+  border-radius: var(--radius);
+}
+
+.card__text blockquote > p:first-child {
+  margin-top: 0;
+  font-size: var(--type-body);
+  line-height: 1.45;
+}
+
+.card__text blockquote > p:last-child:not(:first-child) {
+  margin: 0.75rem 0 0;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--gray-lighter);
+  color: var(--gray-dark);
+  font-size: var(--type-small);
+}
+
+/* The C1 mark: js/c1-mark.js lays a shader canvas over the image and hides
+   the image once the canvas draws. */
+.c1-mark {
+  position: relative;
+  width: 6rem;
+}
+
+.c1-mark img {
+  display: block;
+  width: 100%;
+}
+
+.c1-mark canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.c1-mark--drawn img {
+  visibility: hidden;
+}
+
+/* Article pages */
+
+.article {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 1rem 0 4rem;
+  font-size: var(--type-body);
+  line-height: 1.6;
+}
+
+.article__nav {
+  margin-bottom: 2rem;
+  font-size: var(--type-text);
+  letter-spacing: 0.02em;
+}
+
+/* The arrow doubles as the hint for the ← key (js/keys.js). */
+.article__nav a,
+.article__nav a:visited {
+  color: var(--gray-dark);
+  text-decoration: none;
+}
+
+.article__nav a:hover {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+[data-theme="dark"] .article__nav a,
+[data-theme="dark"] .article__nav a:visited {
+  color: #aa00e8;
+}
+
+[data-theme="dark"] .article__nav a:hover {
+  color: #5cecff;
+}
+
+.article h1 {
+  margin: 0 0 0.25rem;
+  font-size: var(--type-page);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.article__meta {
+  margin: 0 0 2rem;
+  color: var(--gray-dark);
+  font-size: var(--type-text);
+}
+
+.article code {
+  font-size: 0.9em;
+}
+
+.article pre {
+  overflow-x: auto;
+  padding: 0.5rem 0.75rem;
+  background: var(--gray-lighter);
+  border-radius: 0.25rem;
+}
+
+.deck__banner {
+  display: block;
+  margin: 0 0 1.5rem;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.deck__banner img {
+  display: block;
+  width: 100%;
+}
+
+.deck__help {
+  color: var(--gray-darker);
+  font-size: var(--type-text);
+}
+
+/* An embedded talk video: full column width at 16:9. */
+.video {
+  margin: 1.5rem 0;
+}
+
+.video iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+
+.deck__help kbd {
+  padding: 0 0.3em;
+  border: 1px solid var(--gray);
+  border-radius: 0.2rem;
+  font-family: inherit;
+  font-size: 0.85em;
+}
+
+/* Dark mode: js/keys.js sets data-theme="dark" on <html> (the d key). */
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --frame: #262626;
+  --ground: #000000;
+  color: #f0f0f0;
+}
+
+[data-theme="dark"] a,
+[data-theme="dark"] a:visited {
+  color: #5cecff;
+}
+
+[data-theme="dark"] .card {
+  background-color: #000000;
+  border: 1px solid #4e4e8f;
+  box-shadow: none;
+}
+
+[data-theme="dark"] .card__image {
+  border-bottom: 1px solid #4e4e8f;
+}
+
+[data-theme="dark"] .card__title,
+[data-theme="dark"] .card__title a {
+  color: #f0f0f0;
+}
+
+[data-theme="dark"] .card__text blockquote,
+[data-theme="dark"] .card__text blockquote > p:last-child:not(:first-child) {
+  border-color: #4e4e8f;
+}
+
+[data-theme="dark"] .card__text blockquote > p:last-child:not(:first-child) {
+  color: #aa00e8;
+}
+
+[data-theme="dark"] .article__meta {
+  color: #aa00e8;
+}
+
+[data-theme="dark"] .article pre {
+  background: #111111;
+}
+
+[data-theme="dark"] .deck__help {
+  color: #c8c8c8;
+}
+
+[data-theme="dark"] .deck__help kbd {
+  border-color: #4e4e8f;
+}
+
+[data-theme="dark"] .deck__banner {
+  border-radius: 0;
+}

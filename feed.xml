@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>robert-chiniquy.github.io</title>
+<id>https://robert-chiniquy.github.io/</id>
+<link href="https://robert-chiniquy.github.io/"/>
+<link rel="self" href="https://robert-chiniquy.github.io/feed.xml"/>
+<updated>2026-10-01T00:00:00Z</updated>
+<author><name>Robert Chiniquy</name></author>
+<entry>
+<title>Agentic Memory, Logic, and Authorization</title>
+<id>https://robert-chiniquy.github.io/talks/agentic-memory-logic-authorization/</id>
+<link href="https://robert-chiniquy.github.io/talks/agentic-memory-logic-authorization/"/>
+<updated>2026-10-01T00:00:00Z</updated>
+</entry>
+<entry>
+<title>Agent Memory-informed AuthZ</title>
+<id>https://robert-chiniquy.github.io/talks/agent-memory-informed-authz/</id>
+<link href="https://robert-chiniquy.github.io/talks/agent-memory-informed-authz/"/>
+<updated>2026-06-01T00:00:00Z</updated>
+</entry>
+</feed>

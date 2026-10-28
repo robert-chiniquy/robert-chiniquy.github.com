@@ -1,0 +1,46 @@
+# Once a month, if anything was committed in the past month, rebuild the HTML
+# from site/ with site-build and commit whatever changed.
+name: Rebuild site
+
+on:
+  schedule:
+    - cron: "17 9 1 * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rebuild-site
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Count commits from the past month
+        id: recent
+        run: echo "count=$(git rev-list --count --since='1 month ago' HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Install site-build
+        if: steps.recent.outputs.count != '0'
+        run: cargo install --locked --git https://github.com/robert-chiniquy/dotfiles --branch master site-build
+
+      - name: Build
+        if: steps.recent.outputs.count != '0'
+        run: site-build site .
+
+      - name: Commit changes
+        if: steps.recent.outputs.count != '0'
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "nothing changed"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "rebuild the site from site/"
+          git push

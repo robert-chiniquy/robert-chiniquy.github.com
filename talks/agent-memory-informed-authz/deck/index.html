@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Agent Memory-informed AuthZ</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #0d0712; overflow: hidden; }
+    canvas#deck { display: block; width: 100vw; height: 100vh; outline: none; touch-action: manipulation; }
+    #status {
+      position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+      color: #5cecff; background: #0d0712; pointer-events: none;
+      font: 600 13px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.18em;
+    }
+    #status.err { color: #ff0099; white-space: pre-wrap; padding: 2rem; text-align: center; }
+    #status { background: #0d0712 url(thumbnail.png) center / contain no-repeat; align-items: flex-end; padding-bottom: 1.25rem; box-sizing: border-box; }
+    #status.err { background-image: none; align-items: center; }
+  </style>
+</head>
+<body>
+  <div id="status">LOADING</div>
+  <canvas id="deck"></canvas>
+  <script type="module">
+    import init from './deck.js';
+    const status = document.getElementById('status');
+    init()
+      .then(() => status.remove())
+      .catch((e) => { status.className = 'err'; status.textContent = String(e && e.stack || e); });
+    const canvas = document.getElementById('deck');
+    canvas.addEventListener('pointerup', (e) => {
+      if (e.pointerType !== 'mouse' || !document.fullscreenEnabled || document.fullscreenElement) return;
+      document.documentElement.requestFullscreen();
+    });
+  </script>
+</body>
+</html>
