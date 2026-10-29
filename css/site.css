@@ -185,7 +185,7 @@ img {
 /* The bio is one italic line under the links. */
 .site-header__bio {
   color: var(--gray-dark);
-  font-size: var(--type-body);
+  font-size: var(--type-title);
   font-style: italic;
 }
 

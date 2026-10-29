@@ -24,6 +24,9 @@ links:
   - label: Keybase
     url: https://keybase.io/robert_chiniquy
     icon: /images/icons/keybase.svg
+  - label: Feed
+    url: /feed.xml
+    icon: /images/icons/rss.svg
   - label: LinkedIn
     url: https://www.linkedin.com/in/rchiniquy
     icon: /images/icons/linkedin.svg
