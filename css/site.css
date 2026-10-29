@@ -134,11 +134,9 @@ img {
 }
 
 @media (min-width: 56rem) {
-  /* The card sets the header's height. The name sits at the top, and the
-     links stack in a column under it that wraps into further columns when
-     the card leaves too little height. `contain: size` keeps the list's own
-     height out of the header's, so the list fits the card and not the
-     other way round. */
+  /* Next to the card: the name at the top, the links under it in columns
+     two icons tall, filled top to bottom then left to right, and the bio
+     at the bottom left, level with the card's bottom. */
   .site-header--card {
     display: flex;
     justify-content: space-between;
@@ -151,10 +149,15 @@ img {
   }
 
   .site-header--card .site-header__links {
-    flex: 1 1 0;
-    flex-direction: column;
-    align-content: flex-start;
-    contain: size;
+    display: grid;
+    grid-auto-columns: max-content;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(2, auto);
+    justify-content: start;
+  }
+
+  .site-header--card .site-header__bio {
+    margin-top: auto;
   }
 
   .site-header__card {
@@ -179,8 +182,15 @@ img {
   text-decoration: none;
 }
 
+/* The bio is one small italic line under the links. */
+.site-header__bio {
+  color: var(--gray-dark);
+  font-size: var(--type-text);
+  font-style: italic;
+}
+
 .site-header__bio > :first-child {
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
 }
 
 .site-header__bio > :last-child {
@@ -244,8 +254,8 @@ img {
 
 .site-header__icon svg {
   display: block;
-  width: 1.4rem;
-  height: 1.4rem;
+  width: 1.65rem;
+  height: 1.65rem;
   stroke-width: 1.75;
 }
 
