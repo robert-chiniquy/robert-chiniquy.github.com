@@ -105,13 +105,25 @@ img {
   }
 }
 
-/* A card in the index header: under the links on a phone, at the right of
-   the name and links from 40rem, its bottom on the header's rule line. */
+/* A card in the index header: under the links up to 56rem, then at the
+   right of the name and links with its bottom on the header's rule line.
+   The card is wide and short, at the 1.91:1 of a link-preview image, with
+   its text centered top to bottom. The ratio sets a minimum height, so
+   longer text makes the card taller instead of overflowing it. */
 .site-header__card {
+  max-width: 30rem;
   margin-top: 1rem;
 }
 
-@media (min-width: 40rem) {
+.site-header__card .card {
+  aspect-ratio: 1.91 / 1;
+}
+
+.site-header__card .card__text {
+  flex: 0 0 auto;
+}
+
+@media (min-width: 56rem) {
   .site-header--card {
     display: flex;
     align-items: flex-end;
@@ -120,7 +132,7 @@ img {
   }
 
   .site-header__card {
-    flex: 0 1 22rem;
+    flex: 0 1 30rem;
     margin-top: 0;
   }
 }
