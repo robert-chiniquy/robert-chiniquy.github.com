@@ -538,10 +538,14 @@ img {
 }
 
 @media (min-width: 68rem) {
+  /* The left padding grows with the room past 61rem, up to the 15rem the
+     notes take on the right, so once the page is 76rem wide the text column
+     sits on the page's center line. */
   .article {
     display: flow-root;
-    max-width: 61rem;
+    max-width: 76rem;
     padding-right: 15rem;
+    padding-left: clamp(0rem, 100% - 61rem, 15rem);
   }
 
   .marginalia {
