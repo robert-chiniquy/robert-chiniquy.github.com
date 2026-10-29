@@ -111,7 +111,7 @@ img {
    its text centered top to bottom. The ratio sets a minimum height, so
    longer text makes the card taller instead of overflowing it. */
 .site-header__card {
-  max-width: 30rem;
+  max-width: 26rem;
   margin-top: 1rem;
 }
 
@@ -123,16 +123,24 @@ img {
   flex: 0 0 auto;
 }
 
+/* The quote is set a step larger so it fills the box. */
+.site-header__card .card__text blockquote > p:first-child {
+  font-size: var(--type-title);
+  line-height: 1.35;
+}
+
 @media (min-width: 56rem) {
+  /* The header is as tall as the card; the name and links sit at its
+     middle height. */
   .site-header--card {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
     gap: 2rem;
   }
 
   .site-header__card {
-    flex: 0 1 30rem;
+    flex: 0 1 26rem;
     margin-top: 0;
   }
 }
