@@ -14,6 +14,9 @@ links:
   - label: Mastodon
     url: https://mastodon.xyz/@rch
     icon: /images/icons/mastodon.svg
+  - label: Bluesky
+    url: https://bsky.app/profile/cioj.bsky.social
+    icon: /images/icons/bluesky.svg
   - label: Flickr
     url: https://www.flickr.com/photos/cioj
     icon: /images/icons/flickr.svg
