@@ -87,7 +87,7 @@ header: true
 ---
 > I can confirm that @robert_chiniquy is indeed a person, with hope for the world.
 >
-> @thephreck, quoted on May 15, 2021
+> [@thephreck](https://twitter.com/thephreck), quoted on May 15, 2021
 ---
 title: Some posts I wrote for the C1 Security Engineering blog
 link: https://www.c1.ai/authors/rch

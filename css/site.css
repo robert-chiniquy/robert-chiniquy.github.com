@@ -488,6 +488,13 @@ img {
   line-height: 1.45;
 }
 
+/* A link in the byline keeps the byline's gray; the underline marks it. */
+.card__text blockquote > p:last-child:not(:first-child) a,
+.card__text blockquote > p:last-child:not(:first-child) a:visited {
+  color: inherit;
+  text-underline-offset: 0.15em;
+}
+
 .card__text blockquote > p:last-child:not(:first-child) {
   margin: 0.75rem 0 0;
   padding-top: 0.6rem;
