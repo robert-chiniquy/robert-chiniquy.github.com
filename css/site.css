@@ -363,6 +363,12 @@ img {
   text-underline-offset: 0.2em;
 }
 
+/* A link written inside a title goes somewhere else, so it shows always. */
+.card__title a.card__title-inline {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
 /* A page card links as a whole: the title link covers the card, and links
    in the card text stay above it. */
 .card--page,
