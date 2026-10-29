@@ -115,8 +115,12 @@ img {
   margin-top: 1rem;
 }
 
+/* `overflow: clip` in place of the card's `hidden`: a box that hides
+   overflow loses its automatic minimum height, and the ratio would then cut
+   off text on a narrow screen. */
 .site-header__card .card {
   aspect-ratio: 1.91 / 1;
+  overflow: clip;
 }
 
 .site-header__card .card__text {
