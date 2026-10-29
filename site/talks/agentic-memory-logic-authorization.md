@@ -2,6 +2,7 @@
 title: Agentic Memory, Logic, and Authorization
 date: 2026-10-01
 venue: The AI Conference 2026
+description: A talk I gave at The AI Conference 2026
 deck: deck/
 image: deck/share.png
 image_alt: Title slide of Agentic Memory, Logic, and Authorization
