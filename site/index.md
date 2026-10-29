@@ -7,7 +7,7 @@ image_alt: A white San Pedro cactus flower, open, in front of a metal fence
 twitter: robert_chiniquy
 author: Robert Chiniquy
 name: Robert Chiniquy
-bio: stuff about a person, with hope for the world
+bio: mostly stuff about a person, with hope for the world
 links:
   - label: GitHub
     url: https://github.com/robert-chiniquy
@@ -92,7 +92,7 @@ header: true
 >
 > [@thephreck](https://twitter.com/thephreck), quoted on May 15, 2021
 ---
-title: Some posts I wrote for the C1 Security Engineering blog
+title: Some posts I wrote for the [C1](https://c1.ai) Security Engineering blog
 link: https://www.c1.ai/authors/rch
 ---
 <div class="c1-mark"><img src="/images/c1-mark.svg" width="190" height="179" alt="The C1 logo mark, a rounded hexagon with a slanted bar through its middle"></div>

@@ -1,0 +1,41 @@
+# Robert Chiniquy
+
+> detective stuff
+
+mostly stuff about a person, with hope for the world
+
+## Pages
+
+- [Agentic Memory, Logic, and Authorization](https://robert-chiniquy.github.io/talks/agentic-memory-logic-authorization/index.md): The AI Conference 2026, 1 October 2026. A talk I gave at The AI Conference 2026
+- [Agent Memory-informed AuthZ](https://robert-chiniquy.github.io/talks/agent-memory-informed-authz/index.md): fwd:cloudsec 2026, 1 June 2026. A fun little talk I gave at fwd:cloudsec in Seattle this last May.
+
+## On the index page
+
+- [Mallarmé's 'Album Leaf'](https://robert-chiniquy.github.io/): From Stéphane Mallarmé, Collected Poems and Other Verse, trans. E.H. and A.M. Blackmore.
+- [A San Pedro bloom from 2007](https://robert-chiniquy.github.io/): These cacti used to bloom only every 5-10 years. For the last 8 years or so though I have been seeing many, many blooms, almost every year, sometimes multiple times a year. I wish I had more time to spend in gardens.
+- [ScaleFT](https://robert-chiniquy.github.io/): ScaleFT was an infrastructure identity / security company some friends and I started in 2015; the work beginning long before 2015 of course. We became part of Okta in 2018. This image is from one of our engineering blog posts, illustrated by angelblue05. It reminds me of all our moments along the way.
+- [Reading for a sense of self](https://robert-chiniquy.github.io/): I miss the freedom to just read book after book, and reflect.
+- [Confirmed.](https://twitter.com/robert_chiniquy/status/1393377860971233288): I can confirm that @robert_chiniquy is indeed a person, with hope for the world.
+- [Some posts I wrote for the C1 Security Engineering blog](https://www.c1.ai/authors/rch)
+  - [Fault Injection for Complete Branch Coverage](https://www.c1.ai/engineering/fault-injection-for-complete-branch-coverage)
+  - [Proving Equivalence with E-Graphs](https://www.c1.ai/engineering/proving-equivalence-with-egraphs)
+  - [Every Branch Condition Compiles to a DFA](https://www.c1.ai/engineering/every-branch-condition-compiles-to-a-dfa)
+  - [One Mock Server, Twelve Protocols](https://www.c1.ai/engineering/one-mock-server-twelve-protocols)
+  - [Formally Verifying Two Hundred Identity Connectors](https://www.c1.ai/engineering/formally-verifying-identity-connectors)
+  - [Six Shapes of Authorization](https://www.c1.ai/engineering/six-shapes-of-authorization)
+- [An 18-piece Burr puzzle with a 77-step solution](https://robert-chiniquy.github.io/): In early 2003, a friend and I wrote some code to design 18 piece Burr puzzles. This puzzle was one of our favorites due to certain properties of the design which made them good physical puzzles to build. For example, to remove the first piece takes 17 steps, which means the puzzle is not going to fall apart in your hands or even if you just shake it randomly.
+- [Slides from an old talk a long time ago](https://robert-chiniquy.github.io/slides/truth/)
+
+## Elsewhere
+
+- [GitHub](https://github.com/robert-chiniquy)
+- [Mastodon](https://mastodon.xyz/@rch)
+- [Bluesky](https://bsky.app/profile/cioj.bsky.social)
+- [Flickr](https://www.flickr.com/photos/cioj)
+- [Keybase](https://keybase.io/robert_chiniquy)
+- [LinkedIn](https://www.linkedin.com/in/rchiniquy)
+- [Twitter](https://twitter.com/robert_chiniquy)
+
+## Optional
+
+- [Atom feed](https://robert-chiniquy.github.io/feed.xml): the dated pages, newest first
