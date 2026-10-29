@@ -7,6 +7,7 @@ image_alt: A white San Pedro cactus flower, open, in front of a metal fence
 twitter: robert_chiniquy
 author: Robert Chiniquy
 name: Robert Chiniquy
+bio: stuff about a person, with hope for the world
 links:
   - label: GitHub
     url: https://github.com/robert-chiniquy
