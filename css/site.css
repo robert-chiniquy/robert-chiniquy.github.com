@@ -313,6 +313,12 @@ img {
   box-shadow: 0 2px 4px rgb(0 0 0 / 0.1), 0 10px 26px -8px rgb(0 0 0 / 0.28);
 }
 
+/* js/cards.js: a card with a picture is hidden, keeping its space, until
+   the picture has loaded. */
+.cards-wait .card:has(> .card__image):not(.card--ready) {
+  visibility: hidden;
+}
+
 .card__image {
   display: block;
   width: 100%;
