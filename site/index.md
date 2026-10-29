@@ -20,6 +20,9 @@ links:
   - label: Flickr
     url: https://www.flickr.com/photos/cioj
     icon: /images/icons/flickr.svg
+  - label: Keybase
+    url: https://keybase.io/robert_chiniquy
+    icon: /images/icons/keybase.svg
   - label: LinkedIn
     url: https://www.linkedin.com/in/rchiniquy
     icon: /images/icons/linkedin.svg
