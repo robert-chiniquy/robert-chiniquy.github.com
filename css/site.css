@@ -524,6 +524,34 @@ img {
   font-size: var(--type-text);
 }
 
+/* Margin notes: text about the page rather than part of it. Inline after the
+   title on narrow screens; on wide ones the article gives up 15rem of right
+   padding and the note floats into it, beside whatever follows it. The
+   negative margin equals width plus gap, so the column's text does not wrap
+   around it. */
+.marginalia {
+  line-height: 1.5;
+}
+
+.marginalia > p:first-child {
+  margin-top: 0;
+}
+
+@media (min-width: 68rem) {
+  .article {
+    display: flow-root;
+    max-width: 61rem;
+    padding-right: 15rem;
+  }
+
+  .marginalia {
+    float: right;
+    clear: right;
+    width: 13rem;
+    margin-right: -15rem;
+  }
+}
+
 /* An embedded talk video: full column width at 16:9. */
 .video {
   margin: 1.5rem 0;
