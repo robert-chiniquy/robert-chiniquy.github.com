@@ -130,13 +130,27 @@ img {
 }
 
 @media (min-width: 56rem) {
-  /* The header is as tall as the card; the name and links sit at its
-     middle height. */
+  /* The card sets the header's height. The name sits at the top, and the
+     links stack in a column under it that wraps into further columns when
+     the card leaves too little height. `contain: size` keeps the list's own
+     height out of the header's, so the list fits the card and not the
+     other way round. */
   .site-header--card {
     display: flex;
-    align-items: center;
     justify-content: space-between;
     gap: 2rem;
+  }
+
+  .site-header--card .site-header__main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .site-header--card .site-header__links {
+    flex: 1 1 0;
+    flex-direction: column;
+    align-content: flex-start;
+    contain: size;
   }
 
   .site-header__card {
