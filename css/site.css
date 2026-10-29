@@ -550,6 +550,28 @@ img {
     width: 13rem;
     margin-right: -15rem;
   }
+
+  /* A tier sets its note beside the tier's first line instead of beside
+     whatever follows the note: two columns reaching into the margin, the
+     main column first, the note level with its top. */
+  .tier {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 13rem;
+    column-gap: 2rem;
+    align-items: start;
+    margin: 0 -15rem 2rem 0;
+  }
+
+  /* Margins do not collapse out of a grid, so the tier carries the space
+     under the title line instead. */
+  .tier .article__meta {
+    margin-bottom: 0;
+  }
+
+  .tier > .marginalia {
+    width: auto;
+    margin-right: 0;
+  }
 }
 
 /* An embedded talk video: full column width at 16:9. */
