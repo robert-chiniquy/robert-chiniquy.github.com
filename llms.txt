@@ -24,6 +24,8 @@ mostly stuff about a person, with hope for the world
   - [Formally Verifying Two Hundred Identity Connectors](https://www.c1.ai/engineering/formally-verifying-identity-connectors)
   - [Six Shapes of Authorization](https://www.c1.ai/engineering/six-shapes-of-authorization)
 - [An 18-piece Burr puzzle with a 77-step solution](https://robert-chiniquy.github.io/): In early 2003, a friend and I wrote some code to design 18 piece Burr puzzles. This puzzle was one of our favorites due to certain properties of the design which made them good physical puzzles to build. For example, to remove the first piece takes 17 steps, which means the puzzle is not going to fall apart in your hands or even if you just shake it randomly.
+- [Some poker odds I charted](https://gist.github.com/robert-chiniquy/eb47431d3d99fdf5432dacb213483194): Hold'em, seven-card stud, and deuces wild at four to six players: how often a hand shows up, how often it takes the pot, and whether it holds up.
+- [My notes on windsurfing around the Bay](https://gist.github.com/robert-chiniquy/b25bffb5300ce794f198): Lessons, launches, wind sites, and which months blow at Berkeley, Alameda, Coyote Point, and Sherman Island.
 - [Slides from an old talk a long time ago](https://robert-chiniquy.github.io/slides/truth/)
 
 ## Elsewhere

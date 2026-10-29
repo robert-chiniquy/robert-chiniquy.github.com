@@ -105,7 +105,7 @@ link: https://www.c1.ai/authors/rch
 - [Formally Verifying Two Hundred Identity Connectors](https://www.c1.ai/engineering/formally-verifying-identity-connectors)
 - [Six Shapes of Authorization](https://www.c1.ai/engineering/six-shapes-of-authorization)
 ---
-title: An 18-piece Burr puzzle with a 77-step solution
+title: An 18-piece Burr puzzle with a [77-step solution](https://gist.github.com/robert-chiniquy/a26148d5c3a61de8fef2)
 ---
 <a data-flickr-embed="true" href="https://www.flickr.com/photos/cioj/3294075563" title="18-piece Burr puzzle"><img src="https://live.staticflickr.com/3579/3294075563_3be2db08d9_w.jpg" width="100%" alt="18-piece Burr puzzle"></a>
 <script async src="https://embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
@@ -113,6 +113,20 @@ title: An 18-piece Burr puzzle with a 77-step solution
 In early 2003, [a friend and I](/images/mnbnp.jpg) wrote some code to design 18 piece Burr puzzles. This puzzle was one of our favorites due to certain properties of the design which made them good physical puzzles to build. For example, to remove the first piece takes 17 steps, which means the puzzle is not going to fall apart in your hands or even if you just shake it randomly.
 
 We built about 5 or 6 of them with a table saw and router in the backyard of my apartment, along with dozens of 6 piece Burrs. It took a lot of tries, measuring, cutting jigs, and thinking, to make the pieces precisely enough. I miss that kind of leisure, the freedom to just chase ideas.
+---
+title: Some poker odds I charted
+link: https://gist.github.com/robert-chiniquy/eb47431d3d99fdf5432dacb213483194
+image: https://gist.githubusercontent.com/robert-chiniquy/eb47431d3d99fdf5432dacb213483194/raw/040a83803fad96e3d7d962a4771d837978bf293a/17-holds-up-as-best-hand.png
+image_alt: Line chart of how often each poker hand, from high card to royal flush, holds up as the best hand at the table, for Hold'em and stud at four, five, and six players
+---
+Hold'em, seven-card stud, and deuces wild at four to six players: how often a hand shows up, how often it takes the pot, and whether it holds up.
+---
+title: My notes on windsurfing around the Bay
+link: https://gist.github.com/robert-chiniquy/b25bffb5300ce794f198
+image: https://gist.githubusercontent.com/robert-chiniquy/b25bffb5300ce794f198/raw/171ade53bef1977e35e58fdca5bb82ba87658178/95345098_10223446767258227_9217324714312073216_o.jpg
+image_alt: Aerial map of the Sherman Island launch area marking the windsurfer playpen, launches, kite beach, and the prevailing southwest wind
+---
+Lessons, launches, wind sites, and which months blow at Berkeley, Alameda, Coyote Point, and Sherman Island.
 ---
 title: Agent Memory-informed AuthZ
 page: talks/agent-memory-informed-authz.md
