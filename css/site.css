@@ -165,13 +165,13 @@ img {
   color: inherit;
 }
 
-/* Hover lifts the icon a little. */
+/* Hover lifts the icon and pops it, overshooting a little before it settles. */
 .site-header__icon svg {
-  transition: transform 120ms ease-out;
+  transition: transform 160ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .site-header__links a:hover .site-header__icon svg {
-  transform: translateY(-2px) scale(1.15);
+  transform: translateY(-4px) scale(1.35);
 }
 
 [data-theme="dark"] .site-header__links a:has(.site-header__icon):hover {
