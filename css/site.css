@@ -105,6 +105,26 @@ img {
   }
 }
 
+/* A card in the index header: under the links on a phone, at the right of
+   the name and links from 40rem, its bottom on the header's rule line. */
+.site-header__card {
+  margin-top: 1rem;
+}
+
+@media (min-width: 40rem) {
+  .site-header--card {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .site-header__card {
+    flex: 0 1 22rem;
+    margin-top: 0;
+  }
+}
+
 .site-header__name {
   margin: 0;
   font-size: var(--type-name);

@@ -82,6 +82,7 @@ This is a talk I gave at the *The AI Conference 2026* conference. The CFP was ba
 ---
 title: Confirmed.
 link: https://twitter.com/robert_chiniquy/status/1393377860971233288
+header: true
 ---
 > I can confirm that @robert_chiniquy is indeed a person, with hope for the world.
 >
