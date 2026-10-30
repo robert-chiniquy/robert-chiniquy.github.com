@@ -33,6 +33,7 @@ links:
   - label: Twitter
     url: https://twitter.com/robert_chiniquy
     icon: /images/icons/twitter.svg
+    retired: true
 ---
 ---
 title: Mallarmé's 'Album Leaf'

@@ -8,6 +8,8 @@
   --gray-lighter: #ececec;
   --gray-lightest: #f6f6f6;
   --card: #ffffff;
+  /* The one accent: hover rings, hover underlines, # links. */
+  --accent: #5cecff;
 
   /* Type sizes. Each step is 1.25 to 1.6 times the one below, so a heading
      stands clearly above the text it heads. Everything on the site uses one
@@ -252,6 +254,26 @@ img {
   }
 }
 
+/* An account no longer used: a line through the icon, and no pop. */
+.site-header__retired .site-header__icon {
+  display: block;
+  position: relative;
+}
+
+.site-header__retired .site-header__icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -12%;
+  right: -12%;
+  border-top: 1.75px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.site-header__links .site-header__retired a:hover .site-header__icon svg {
+  transform: none;
+}
+
 .site-header__icon svg {
   display: block;
   width: calc(1.65rem - 1px);
@@ -313,6 +335,12 @@ img {
   box-shadow: 0 2px 4px rgb(0 0 0 / 0.1), 0 10px 26px -8px rgb(0 0 0 / 0.28);
 }
 
+/* A card that links somewhere as a whole gets an accent ring on hover. */
+.card--page:hover,
+.card:has(.card__title > a:not(.card__title-inline)):hover {
+  box-shadow: 0 0 0 2px var(--accent), 0 2px 4px rgb(0 0 0 / 0.1), 0 10px 26px -8px rgb(0 0 0 / 0.28);
+}
+
 /* js/cards.js: a card with a picture is hidden, keeping its space, until
    the picture has loaded. */
 .cards-wait .card:has(> .card__image):not(.card--ready) {
@@ -361,6 +389,39 @@ img {
 .card__title a:hover {
   text-decoration: underline;
   text-underline-offset: 0.2em;
+}
+
+/* Hover underlines take the accent; the text keeps its color. */
+a:hover {
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+}
+
+/* A # after each heading in a page links to that heading. It shows on
+   hovering the heading, and always where nothing can hover. */
+.section-link {
+  margin-left: 0.3em;
+  font-size: 0.9em;
+  text-decoration: none;
+  visibility: hidden;
+}
+
+.section-link::before {
+  content: "#";
+}
+
+.section-link:not(:hover) {
+  color: var(--gray);
+}
+
+:is(h1, h2, h3, h4, h5, h6):hover > .section-link {
+  visibility: visible;
+}
+
+@media (hover: none) {
+  .section-link {
+    visibility: visible;
+  }
 }
 
 /* A link written inside a title goes somewhere else, so it shows always. */
@@ -703,6 +764,12 @@ img {
   background-color: #000000;
   border: 1px solid #4e4e8f;
   box-shadow: none;
+}
+
+[data-theme="dark"] .card--page:hover,
+[data-theme="dark"] .card:has(.card__title > a:not(.card__title-inline)):hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
 }
 
 [data-theme="dark"] .card__image {
