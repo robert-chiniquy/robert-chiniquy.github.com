@@ -3,6 +3,7 @@
 //      viewer presses d, the page follows the system's light or dark
 //      setting, including when it changes while the page is open.
 //   ←  on an article page, follows the link back to the index.
+//   ?  shows a box listing these keys; any key or click closes it.
 //   Space  toggles the light rays in the frame around the page (js/rays.js).
 //      They start on; turning them off is kept in localStorage. Never on
 //      when the system asks for reduced motion, or on a touch screen.
@@ -56,7 +57,52 @@
     }
   });
 
+  var help = null;
+
+  function closeHelp() {
+    if (help && help.open) {
+      help.close();
+    }
+  }
+
+  // Built on first use; lists only the keys that do something on this page.
+  function openHelp() {
+    if (!help) {
+      help = document.createElement("dialog");
+      help.className = "keys-help";
+      var rows = [["d", "dark or light"]];
+      if (!still) {
+        rows.push(["Space", "light rays on or off"]);
+      }
+      if (document.querySelector(".article__nav a")) {
+        rows.push(["←", "back to the index"]);
+      }
+      rows.push(["?", "this list"]);
+      var list = document.createElement("dl");
+      rows.forEach(function (r) {
+        var dt = document.createElement("dt");
+        var kbd = document.createElement("kbd");
+        kbd.textContent = r[0];
+        dt.appendChild(kbd);
+        var dd = document.createElement("dd");
+        dd.textContent = r[1];
+        list.appendChild(dt);
+        list.appendChild(dd);
+      });
+      help.appendChild(list);
+      help.addEventListener("click", closeHelp);
+      document.body.appendChild(help);
+    }
+    help.showModal();
+  }
+
   document.addEventListener("keydown", function (ev) {
+    // While the list is open, any key only closes it.
+    if (help && help.open) {
+      ev.preventDefault();
+      closeHelp();
+      return;
+    }
     if (ev.metaKey || ev.ctrlKey || ev.altKey || ev.repeat) {
       return;
     }
@@ -64,7 +110,10 @@
     if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) {
       return;
     }
-    if (ev.key === "d") {
+    if (ev.key === "?") {
+      ev.preventDefault();
+      openHelp();
+    } else if (ev.key === "d") {
       var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
       apply(next);
       try {
