@@ -35,7 +35,11 @@
   --radius: 0.75rem;
 }
 
+/* The page is light unless js/keys.js sets data-theme="dark". The head's
+   color-scheme meta allows both so the first paint can match the system;
+   this pins the light theme's text and form colors once the CSS loads. */
 html {
+  color-scheme: light;
   background-color: var(--frame);
 }
 
