@@ -1,5 +1,7 @@
 // Site keys, ignored with a modifier held or while typing in a field:
-//   d  toggles dark mode; the choice is kept in localStorage.
+//   d  toggles dark mode; the choice is kept in localStorage. Until a
+//      viewer presses d, the page follows the system's light or dark
+//      setting, including when it changes while the page is open.
 //   ←  on an article page, follows the link back to the index.
 //   Space  toggles the light rays in the frame around the page (js/rays.js).
 //      They start on; turning them off is kept in localStorage. Never on
@@ -36,9 +38,23 @@
     }
   }
 
-  try {
-    apply(localStorage.getItem(KEY));
-  } catch (e) {}
+  var system = window.matchMedia("(prefers-color-scheme: dark)");
+
+  function chosen() {
+    try {
+      return localStorage.getItem(KEY);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  apply(chosen() || (system.matches ? "dark" : "light"));
+
+  system.addEventListener("change", function () {
+    if (!chosen()) {
+      apply(system.matches ? "dark" : "light");
+    }
+  });
 
   document.addEventListener("keydown", function (ev) {
     if (ev.metaKey || ev.ctrlKey || ev.altKey || ev.repeat) {
